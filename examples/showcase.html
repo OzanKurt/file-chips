@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>File Chips showcase</title>
+    <style>
+        /*
+         * An expense claim form for the chips to live in. The chip markup is what
+         * <x-file-chips> renders. Only ?scheme=dark restyles the chips, through
+         * the --fc-* custom properties, exactly as the README shows.
+         */
+        :root {
+            color-scheme: light;
+            --bg: #f2f4f7;
+            --surface: #ffffff;
+            --text: #1b2330;
+            --muted: #667085;
+            --line: #e3e7ed;
+            --field: #f8f9fb;
+            --accent: #2563eb;
+        }
+
+        :root[data-scheme="dark"] {
+            color-scheme: dark;
+            --bg: #101318;
+            --surface: #171b22;
+            --text: #e6e9ef;
+            --muted: #929bab;
+            --line: #262c36;
+            --field: #1d222b;
+            --accent: #7aa2ff;
+
+            --fc-chip-bg: #1f2530;
+            --fc-chip-bg-hover: #273041;
+            --fc-border: rgba(255, 255, 255, 0.12);
+            --fc-text: #e6e9ef;
+            --fc-muted: #9aa3b2;
+            --fc-ext-bg: rgba(255, 255, 255, 0.10);
+            --fc-popover-bg: #1a1f28;
+            --fc-popover-border: rgba(255, 255, 255, 0.12);
+            --fc-popover-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+            --fc-thumb-bg: #232a35;
+            --fc-primary: #7aa2ff;
+            --fc-primary-text: #0f1420;
+            --fc-danger: #f0767a;
+            --fc-danger-bg: rgba(240, 118, 122, 0.12);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font: 400 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+
+        form {
+            width: 760px;
+            margin: 40px auto;
+            padding: 28px;
+            display: grid;
+            gap: 20px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+        }
+
+        h1 { margin: 0; font-size: 20px; font-weight: 600; }
+        p.lead { margin: -12px 0 0; color: var(--muted); }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        label { display: grid; gap: 6px; font-weight: 600; font-size: 13px; }
+        .field { padding: 9px 12px; background: var(--field); border: 1px solid var(--line); border-radius: 8px; font-weight: 400; font-size: 14px; }
+        .attachments { display: grid; gap: 10px; }
+        .attachments header { display: flex; justify-content: space-between; align-items: baseline; }
+        .attachments header span { color: var(--muted); font-size: 13px; }
+
+        .actions { display: flex; justify-content: flex-end; gap: 10px; padding-top: 8px; border-top: 1px solid var(--line); }
+        .actions span { padding: 9px 16px; border-radius: 8px; font-weight: 600; }
+        .actions .save { background: var(--accent); color: #fff; }
+        :root[data-scheme="dark"] .actions .save { color: #0f1420; }
+    </style>
+</head>
+<body>
+    <form>
+        <h1>Expense claim EC-2207</h1>
+        <p class="lead">Client visit to Rotterdam, 14 to 16 October</p>
+
+        <div class="grid">
+            <label>Cost centre<span class="field">Sales Benelux</span></label>
+            <label>Amount<span class="field">&euro;1,284.60</span></label>
+        </div>
+
+        <div class="attachments">
+            <header><b>Receipts and documents</b><span>6 files</span></header>
+
+            <div class="fc-chips" data-file-chips>
+                <div data-file-chips-bucket hidden></div>
+                <!-- chips are rendered by showcase.js from one list, in the component's markup -->
+            </div>
+        </div>
+
+        <div class="actions"><span>Cancel</span><span class="save">Save claim</span></div>
+    </form>
+    <script type="module" src="./showcase.js"></script>
+</body>
+</html>

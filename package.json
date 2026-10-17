@@ -53,14 +53,18 @@
     "scripts": {
         "build": "node ./scripts/build.js",
         "test": "vitest run",
-        "prepublishOnly": "npm test && npm run build"
+        "prepublishOnly": "npm test && npm run build",
+        "examples": "vite --config vite.examples.config.js",
+        "screenshots": "node scripts/screenshots.js"
     },
     "publishConfig": {
         "access": "public"
     },
     "devDependencies": {
+        "@playwright/test": "1.63.0",
         "esbuild": "^0.28.2",
         "happy-dom": "^21.0.3",
+        "vite": "8.3.4",
         "vitest": "^5.0.5"
     }
 }

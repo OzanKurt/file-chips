@@ -10,3 +10,7 @@
 /phpunit.xml export-ignore
 /package.json export-ignore
 /package-lock.json export-ignore
+/examples export-ignore
+/docs export-ignore
+/vite.examples.config.js export-ignore
+*.png binary

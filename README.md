@@ -2,6 +2,8 @@
 
 Compact file chips for forms and detail pages. Each chip opens a preview popover with a thumbnail, file details and View / Download links, and can mark the file for removal: a hidden input is added to your form and your server deletes the file on save.
 
+![An expense claim form with six file chips; the chip for client-dinner-receipt.jpg has opened a popover with a receipt thumbnail, the file size and date, a note, and View, Download and Remove on save buttons.](docs/images/popover-light.png)
+
 - **JavaScript + CSS** on npm as [`@ozankurt/file-chips`](https://www.npmjs.com/package/@ozankurt/file-chips): no dependencies, no framework, about 3 KB minified.
 - **Laravel** on Packagist as `ozankurt/laravel-file-chips`: a `<x-file-chips>` Blade component that renders the markup, with optional [Spatie Media Library](https://spatie.be/docs/laravel-medialibrary) support, and ships the same built JS and CSS.
 
@@ -45,6 +47,10 @@ foreach ($request->input('delete_media_ids', []) as $id) {
 ```
 
 Always scope the deletion to the owning model as above; the ids come from the browser.
+
+Marking a file adds the hidden input and strikes the chip through until the form is saved:
+
+![The PDF chip is outlined in red with its name struck through, and its popover shows a red Marked button.](docs/images/marked-light.png)
 
 ### Props
 
@@ -184,6 +190,8 @@ Every colour, radius and size is a CSS custom property. Override them on `:root`
 }
 ```
 
+![The same form and popover in a dark theme set only through the custom properties above.](docs/images/popover-dark.png)
+
 Full list: `--fc-font-size`, `--fc-gap`, `--fc-radius`, `--fc-chip-max-width`, `--fc-chip-bg`, `--fc-chip-bg-hover`, `--fc-border`, `--fc-text`, `--fc-muted`, `--fc-danger`, `--fc-danger-bg`, `--fc-primary`, `--fc-primary-text`, `--fc-focus`, `--fc-ext-bg`, `--fc-popover-width`, `--fc-popover-bg`, `--fc-popover-border`, `--fc-popover-radius`, `--fc-popover-shadow`, `--fc-popover-z`, `--fc-thumb-size`, `--fc-thumb-bg`.
 
 ## Development
@@ -193,7 +201,11 @@ npm install && composer install
 npm test            # JS (Vitest + happy-dom)
 vendor/bin/pest     # PHP
 npm run build       # rebuild dist/, which is committed
+npm run examples    # the showcase on http://localhost:5183/showcase.html
+npm run screenshots # recapture docs/images/ from the showcase
 ```
+
+The showcase takes `?scheme=light|dark` and `?scene=popover|marked`.
 
 ## License
 
