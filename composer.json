@@ -1,0 +1,57 @@
+{
+    "name": "ozankurt/laravel-file-chips",
+    "description": "Blade component for compact file chips with a preview popover and mark-for-removal, with optional Spatie Media Library support",
+    "keywords": ["laravel", "blade", "component", "file", "attachments", "media", "spatie"],
+    "license": "MIT",
+    "homepage": "https://github.com/OzanKurt/file-chips",
+    "authors": [
+        {
+            "name": "Ozan Kurt",
+            "email": "me@ozankurt.com",
+            "homepage": "https://ozankurt.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^11.0 || ^12.0 || ^13.0",
+        "illuminate/view": "^11.0 || ^12.0 || ^13.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^5.0",
+        "pestphp/pest-plugin-laravel": "^5.0",
+        "spatie/laravel-medialibrary": "^11.0"
+    },
+    "suggest": {
+        "spatie/laravel-medialibrary": "Pass Media models straight to <x-file-chips> and use FileChip::fromMedia()"
+    },
+    "autoload": {
+        "psr-4": {
+            "OzanKurt\\FileChips\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OzanKurt\\FileChips\\Tests\\": "tests/php"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OzanKurt\\FileChips\\FileChipsServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

@@ -1,0 +1,66 @@
+{
+    "name": "@ozankurt/file-chips",
+    "version": "1.0.0",
+    "description": "Compact file chips with a preview popover and mark-for-removal, framework-free",
+    "keywords": [
+        "file",
+        "attachments",
+        "chips",
+        "popover",
+        "upload",
+        "ui"
+    ],
+    "license": "MIT",
+    "author": {
+        "name": "Ozan Kurt",
+        "email": "me@ozankurt.com",
+        "url": "https://ozankurt.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/OzanKurt/file-chips.git"
+    },
+    "homepage": "https://github.com/OzanKurt/file-chips#readme",
+    "bugs": "https://github.com/OzanKurt/file-chips/issues",
+    "type": "module",
+    "main": "dist/file-chips.cjs",
+    "module": "dist/esm/file-chips.mjs",
+    "unpkg": "dist/file-chips.min.js",
+    "jsdelivr": "dist/file-chips.min.js",
+    "exports": {
+        ".": {
+            "import": "./dist/esm/file-chips.mjs",
+            "require": "./dist/file-chips.cjs",
+            "default": "./dist/esm/file-chips.mjs"
+        },
+        "./style.css": "./dist/file-chips.css",
+        "./dist/*": "./dist/*",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist",
+        "CHANGELOG.md"
+    ],
+    "sideEffects": [
+        "*.css",
+        "./dist/file-chips.js",
+        "./dist/file-chips.min.js",
+        "./js/browser.js"
+    ],
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "build": "node ./scripts/build.js",
+        "test": "vitest run",
+        "prepublishOnly": "npm test && npm run build"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "devDependencies": {
+        "esbuild": "^0.28.2",
+        "happy-dom": "^21.0.3",
+        "vitest": "^5.0.5"
+    }
+}
