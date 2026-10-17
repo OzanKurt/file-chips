@@ -12,7 +12,7 @@ function media(array $attributes = []): Media
     $media->forceFill(array_merge([
         'id' => 7,
         'uuid' => 'b7f0c6a2-1111-4c1e-9d1e-000000000007',
-        'model_type' => 'App\\Models\\Claim',
+        'model_type' => 'App\\Models\\Post',
         'model_id' => 1,
         'collection_name' => 'documents',
         'name' => 'report',
