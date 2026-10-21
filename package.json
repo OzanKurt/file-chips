@@ -25,10 +25,12 @@
     "type": "module",
     "main": "dist/file-chips.cjs",
     "module": "dist/esm/file-chips.mjs",
+    "types": "dist/file-chips.d.ts",
     "unpkg": "dist/file-chips.min.js",
     "jsdelivr": "dist/file-chips.min.js",
     "exports": {
         ".": {
+            "types": "./dist/file-chips.d.ts",
             "import": "./dist/esm/file-chips.mjs",
             "require": "./dist/file-chips.cjs",
             "default": "./dist/esm/file-chips.mjs"
@@ -53,9 +55,10 @@
     "scripts": {
         "build": "node ./scripts/build.js",
         "test": "vitest run",
-        "prepublishOnly": "npm test && npm run build",
+        "prepublishOnly": "npm test && npm run typecheck && npm run build",
         "examples": "vite --config vite.examples.config.js",
-        "screenshots": "node scripts/screenshots.js"
+        "screenshots": "node scripts/screenshots.js",
+        "typecheck": "tsc -p tsconfig.types.json"
     },
     "publishConfig": {
         "access": "public"
@@ -64,6 +67,7 @@
         "@playwright/test": "1.63.0",
         "esbuild": "^0.28.2",
         "happy-dom": "^21.0.3",
+        "typescript": "^5.9.3",
         "vite": "8.3.4",
         "vitest": "^5.0.5"
     }

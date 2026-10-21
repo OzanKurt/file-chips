@@ -1,0 +1,67 @@
+name: Tests
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+jobs:
+    php:
+        name: PHP ${{ matrix.php }}, Laravel ${{ matrix.laravel }}
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                include:
+                    - php: '8.3'
+                      laravel: '11.*'
+                      testbench: '9.*'
+                      pest: '^3.0'
+                    - php: '8.4'
+                      laravel: '12.*'
+                      testbench: '10.*'
+                      pest: '^4.0'
+                    - php: '8.4'
+                      laravel: '13.*'
+                      testbench: '11.*'
+                      pest: '^5.0'
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+                  extensions: mbstring, fileinfo, sqlite3, pdo_sqlite
+                  coverage: none
+
+            - name: Pin Laravel, Testbench and Pest for this row
+              run: >
+                  composer require --dev --no-update --no-interaction
+                  "illuminate/support:${{ matrix.laravel }}"
+                  "illuminate/view:${{ matrix.laravel }}"
+                  "orchestra/testbench:${{ matrix.testbench }}"
+                  "pestphp/pest:${{ matrix.pest }}"
+                  "pestphp/pest-plugin-laravel:${{ matrix.pest }}"
+
+            - run: composer update --prefer-dist --no-interaction --no-progress -W
+
+            - run: vendor/bin/pest
+
+    js:
+        name: JavaScript
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: npm
+
+            - run: npm ci
+            - run: npm test
+            - run: npm run typecheck
+            - run: npm run build
+
+            - name: Committed dist/ matches the sources
+              run: git diff --exit-code -- dist

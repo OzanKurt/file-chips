@@ -22,8 +22,8 @@ class FileChipsServiceProvider extends ServiceProvider
 
         Blade::component('file-chips', FileChips::class);
 
-        Blade::directive('fileChipsStyles', fn (): string => '<?php echo \'<link rel="stylesheet" href="\'.e(asset(config(\'file-chips.asset_path\').\'/file-chips.min.css\')).\'">\'; ?>');
-        Blade::directive('fileChipsScripts', fn (): string => '<?php echo \'<script src="\'.e(asset(config(\'file-chips.asset_path\').\'/file-chips.min.js\')).\'" defer></script>\'; ?>');
+        Blade::directive('fileChipsStyles', fn (): string => '<?php echo \OzanKurt\FileChips\Assets::styles(); ?>');
+        Blade::directive('fileChipsScripts', fn (): string => '<?php echo \OzanKurt\FileChips\Assets::scripts(); ?>');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([__DIR__.'/../dist' => public_path('vendor/file-chips')], ['file-chips', 'file-chips-assets', 'laravel-assets']);

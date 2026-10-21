@@ -14,3 +14,6 @@
 /docs export-ignore
 /vite.examples.config.js export-ignore
 *.png binary
+/tsconfig.types.json export-ignore
+/types export-ignore
+/.github export-ignore

@@ -28,6 +28,8 @@ In your layout:
 </body>
 ```
 
+Both URLs carry the published file's modification time (`?v=...`), so browsers fetch the new files after you upgrade and publish the assets again. The script tag gets your CSP nonce when the app uses `Vite::useCspNonce()`.
+
 In a form:
 
 ```blade
@@ -203,7 +205,14 @@ vendor/bin/pest     # PHP
 npm run build       # rebuild dist/, which is committed
 npm run examples    # the showcase on http://localhost:5183/showcase.html
 npm run screenshots # recapture docs/images/ from the showcase
+npm run typecheck   # the TypeScript declarations
 ```
+
+CI runs the PHP suite on PHP 8.3 with Laravel 11, and PHP 8.4 with Laravel 12 and 13, plus the JS tests, the typecheck and a check that the committed `dist/` matches the sources.
+
+### TypeScript
+
+`dist/file-chips.d.ts` types the JS API and the `file-chips:change` event, so `import FileChips from '@ozankurt/file-chips'` is typed in TypeScript and editors.
 
 The showcase takes `?scheme=light|dark` and `?scene=popover|marked`.
 

@@ -16,6 +16,7 @@ const outputs = [
 
 await Promise.all(outputs.map(({ entryPoints, ...options }) => build({ entryPoints, bundle: true, ...options })));
 copyFileSync('css/file-chips.css', 'dist/file-chips.css');
+copyFileSync('types/file-chips.d.ts', 'dist/file-chips.d.ts');
 
 for (const file of [...outputs.map((o) => o.outfile), 'dist/file-chips.css']) {
     console.log(`${file}  ${(statSync(file).size / 1024).toFixed(1)} KB`);
