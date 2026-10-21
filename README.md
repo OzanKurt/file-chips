@@ -208,7 +208,7 @@ npm run screenshots # recapture docs/images/ from the showcase
 npm run typecheck   # the TypeScript declarations
 ```
 
-CI runs the PHP suite on PHP 8.3 with Laravel 11, and PHP 8.4 with Laravel 12 and 13, plus the JS tests, the typecheck and a check that the committed `dist/` matches the sources.
+CI runs the PHP suite on PHP 8.3 and 8.4 with Laravel 12, and PHP 8.4 with Laravel 13, plus the JS tests, the typecheck and a check that the committed `dist/` matches the sources.
 
 ### TypeScript
 
